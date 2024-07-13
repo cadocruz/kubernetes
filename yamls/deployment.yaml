@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "goserver"
+  labels:
+    app: "goserver"
+spec:
+  selector:
+   matchLabels:
+     app: "goserver"
+  replicas: 3   
+  template:
+    metadata:
+      name: "goserver"
+      labels:
+        app: "goserver"
+    spec:
+      containers:
+      - name: "goserver"
+        image: cadocruz/hello-go:1.0.2
+        env:
+        - name: NAME
+          value: "John Doe"
+        - name: AGE
+          value: "30"
