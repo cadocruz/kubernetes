@@ -18,8 +18,18 @@ spec:
       containers:
       - name: "goserver"
         image: cadocruz/hello-go:1.0.2
-        env:
-        - name: NAME
-          value: "John Doe"
-        - name: AGE
-          value: "30"
+        envFrom:
+        - configMapRef:
+            name: goserver-env
+        
+        # env:
+        # - name: NAME
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: goserver-env
+        #       key: NAME 
+        # - name: AGE
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: goserver-env
+        #       key: AGE 
